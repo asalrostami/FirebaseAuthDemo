@@ -1,11 +1,14 @@
 package com.example.asal.firebaseauthdemo;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -36,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mTextViewRegister = (TextView)findViewById(R.id.textViewAlreadyRegister);
         mTextViewRegister.setOnClickListener(this);
+
+
 
         btnRegister = (Button)findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(this);
@@ -100,5 +105,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
 
+    }
+
+    public void hideKeyboard(View view) {
+        
+         InputMethodManager imm = (InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+          imm.hideSoftInputFromWindow(view.getWindowToken(),0);
     }
 }
